@@ -1,0 +1,33 @@
+<style>
+	.form-control{
+		margin-bottom: 20px;
+	}
+</style>
+
+{% extends 'base.html' %}
+<!-- <style>
+#Div1{
+    text-align: center;
+}
+</style> -->
+{% block content %}      
+
+
+{% load crispy_forms_tags %}
+
+<!--Login--> 
+{% comment %} <div style="text-align: center;" class="container py-5"> {% endcomment %}
+  <h1 class="text-center">Login</h1>
+<div  class="form-control" style="width: 50%; margin-left: 25%; background-color: pink;">
+    <form method="POST">
+      <div class="form-group">
+          {% csrf_token %}
+          {{ login_form|crispy }}
+        <button class="btn btn-primary" type="submit">Login</button>
+      </div> 
+  </form>
+  {% comment %} <p class="text-center">Don't have an account? <a href="/User/register">Create an account</a>.</p> {% endcomment %}
+  <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+</div>
+
+{% endblock %}
